@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "388843090980",
+    "project_id": "platzy-6b905",
+    "storage_bucket": "platzy-6b905.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:388843090980:android:369ed2ed0680aaa6a7d4b1",
+        "android_client_info": {
+          "package_name": "com.example.platzy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "388843090980-685fea93gsm9cpn2jfsudo5po3p9408p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.platzy",
+            "certificate_hash": "ddeca67cd55c09fcf76b32356064f58161ec2b28"
+          }
+        },
+        {
+          "client_id": "388843090980-qdvo6dibodklt08qfold1h9438cd7m7m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAwqTxdKBnzoApTFCSkXJSQUgsN5VwxBsA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "388843090980-qdvo6dibodklt08qfold1h9438cd7m7m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
