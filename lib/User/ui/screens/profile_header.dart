@@ -6,11 +6,12 @@ import '../widgets/user_info.dart';
 import '../widgets/button_bar.dart';
 
 class ProfileHeader extends StatelessWidget {
-  UserBloc userBloc;
   User user;
+  ProfileHeader(@required this.user);
   @override
   Widget build(BuildContext context) {
-    userBloc = BlocProvider.of<UserBloc>(context);
+/*
+    
     return StreamBuilder(
         stream: userBloc.streamFirebase,
         builder: (BuildContext context, AsyncSnapshot snapshot) {
@@ -24,9 +25,9 @@ class ProfileHeader extends StatelessWidget {
             case ConnectionState.done:
               return showProfileData(snapshot);
           }
-        });
+        });*/
 
-    /* final title = Text(
+    final title = Text(
       'Profile',
       style: TextStyle(
           fontFamily: 'Lato',
@@ -42,11 +43,11 @@ class ProfileHeader extends StatelessWidget {
           Row(
             children: <Widget>[title],
           ),
-          UserInfo('assets/img/ann.jpg', 'Anahí Salgado', 'anahi@platzi.com'),
+          UserInfo(user),
           ButtonsBar()
         ],
       ),
-    );*/
+    );
   }
 
   Widget showProfileData(AsyncSnapshot snapshot) {

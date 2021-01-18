@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:generic_bloc_provider/generic_bloc_provider.dart';
+import 'package:platzy/User/bloc/bloc_user.dart';
+import 'package:platzy/User/model/user.dart';
 import 'profile_place.dart';
 import '../../../Place/model/place.dart';
 
 class ProfilePlacesList extends StatelessWidget {
-  Place place = Place(
+  UserBloc userBloc;
+  User user;
+  ProfilePlacesList(@required this.user);
+  /*Place place = Place(
       name: "Knuckles Mountains Range",
       description: "Hiking. Water fall hunting. Natural bath",
       urlImage:
@@ -17,18 +23,43 @@ class ProfilePlacesList extends StatelessWidget {
       urlImage:
           "https://images.unsplash.com/photo-1524654458049-e36be0721fa2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80",
       likes: 10,
-      userOwner: null);
+      userOwner: null);*/
 
   @override
   Widget build(BuildContext context) {
+    userBloc = BlocProvider.of<UserBloc>(context);
     return Container(
-      margin: EdgeInsets.only(top: 10.0, left: 20.0, right: 20.0, bottom: 10.0),
-      child: Column(
+        margin:
+            EdgeInsets.only(top: 10.0, left: 20.0, right: 20.0, bottom: 10.0),
+        child: StreamBuilder(
+            stream: userBloc.myPlacesListStream(user.uid),
+            builder: (context, AsyncSnapshot snapshot) {
+              switch (snapshot.connectionState) {
+                case ConnectionState.waiting:
+                  return CircularProgressIndicator();
+                case ConnectionState.done:
+                  return Column(
+                    children: userBloc.buildMyPlaces(snapshot.data.documents),
+                  );
+                case ConnectionState.active:
+                  return Column(
+                    children: userBloc.buildMyPlaces(snapshot.data.documents),
+                  );
+                case ConnectionState.none:
+                  return CircularProgressIndicator();
+                default:
+                  return Column(
+                    children: userBloc.buildMyPlaces(snapshot.data.documents),
+                  );
+              }
+            }));
+  }
+  /*
+  
+  Column(
         children: <Widget>[
           ProfilePlace(place),
           ProfilePlace(place2),
         ],
-      ),
-    );
-  }
+      ),*/
 }
